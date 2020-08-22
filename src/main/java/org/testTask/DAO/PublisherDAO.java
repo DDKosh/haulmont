@@ -7,6 +7,9 @@ import org.testTask.DTO.Publisher;
 
 import java.sql.*;
 
+/**
+ * The type Publisher dao.
+ */
 public class PublisherDAO extends AbstractDAO<Publisher> {
     private static final int ID = 1;
 
@@ -14,8 +17,8 @@ public class PublisherDAO extends AbstractDAO<Publisher> {
 
     @Override
     protected Publisher getObject(ResultSet resultSet) throws SQLException {
-        for(Publisher publisher : Publisher.values()){
-            if( publisher.getName().equals(resultSet.getString(NAME))){
+        for (Publisher publisher : Publisher.values()) {
+            if (publisher.getName().equals(resultSet.getString(NAME))){
                 return publisher;
             }
         }
@@ -41,37 +44,44 @@ public class PublisherDAO extends AbstractDAO<Publisher> {
     }
 
     @Override
-    protected PreparedStatement getPsUpdate(Connection connection, Publisher object, long id) throws SQLException {
+    protected PreparedStatement getPsUpdate(
+            Connection connection, Publisher object, long id) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsDelete(Connection connection, long id) throws SQLException {
+    protected PreparedStatement getPsDelete(
+            Connection connection, long id) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsAdd(Connection connection, Publisher object) throws SQLException {
+    protected PreparedStatement getPsAdd(
+            Connection connection, Publisher object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByTitle(Connection connection, String title) throws SQLException {
+    protected PreparedStatement getPsByTitle(
+            Connection connection, String title) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByAuthor(Connection connection, Author object) throws SQLException {
+    protected PreparedStatement getPsByAuthor(
+            Connection connection, Author object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByPublisher(Connection connection, Publisher object) throws SQLException {
+    protected PreparedStatement getPsByPublisher(
+            Connection connection, Publisher object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByGenre(Connection connection, Genre object) throws SQLException {
+    protected PreparedStatement getPsByGenre(
+            Connection connection, Genre object) throws SQLException {
         return null;
     }
 }

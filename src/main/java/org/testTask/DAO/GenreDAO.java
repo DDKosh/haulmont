@@ -7,6 +7,9 @@ import org.testTask.DTO.Publisher;
 
 import java.sql.*;
 
+/**
+ * The type Genre dao.
+ */
 public class GenreDAO extends AbstractDAO<Genre> {
     private static final int ONE = 1;
 
@@ -35,7 +38,8 @@ public class GenreDAO extends AbstractDAO<Genre> {
     }
 
     @Override
-    protected PreparedStatement getPsUpdate(Connection connection, Genre object, long id) throws SQLException {
+    protected PreparedStatement getPsUpdate(
+            Connection connection, Genre object, long id) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
@@ -76,22 +80,26 @@ public class GenreDAO extends AbstractDAO<Genre> {
     }
 
     @Override
-    protected PreparedStatement getPsByTitle(Connection connection, String title) throws SQLException {
+    protected PreparedStatement getPsByTitle(
+            Connection connection, String title) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByAuthor(Connection connection, Author object) throws SQLException {
+    protected PreparedStatement getPsByAuthor(
+            Connection connection, Author object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByPublisher(Connection connection, Publisher object) throws SQLException {
+    protected PreparedStatement getPsByPublisher(
+            Connection connection, Publisher object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByGenre(Connection connection, Genre object) throws SQLException {
+    protected PreparedStatement getPsByGenre(
+            Connection connection, Genre object) throws SQLException {
         return null;
     }
 

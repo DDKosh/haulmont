@@ -1,12 +1,30 @@
 package org.testTask.DTO;
 
-public enum Publisher{
+/**
+ * The enum Publisher.
+ */
+public enum Publisher {
+    /**
+     * Moscow publisher.
+     */
     MOSCOW("МОСКВА"),
+    /**
+     * St petersburg publisher.
+     */
     ST_PETERSBURG("ПИТЕР"),
+    /**
+     * O reilly publisher.
+     */
     O_REILLY("O’REILLY");
 
+    /**
+     * The name
+     */
     private String name;
 
+    /**
+     * The identifier
+     */
     private long id;
 
     Publisher(final String name) {
@@ -14,10 +32,20 @@ public enum Publisher{
         this.id = ordinal();
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public long getId() {
         return id;
     }

@@ -4,6 +4,9 @@ import org.testTask.DTO.*;
 
 import java.sql.*;
 
+/**
+ * The type Book dao.
+ */
 public class BookDAO extends AbstractDAO<Book> {
     private static final int ONE = 1;
 
@@ -49,11 +52,13 @@ public class BookDAO extends AbstractDAO<Book> {
     }
 
     @Override
-    protected PreparedStatement getPsUpdate(Connection connection, Book object, long id) throws SQLException {
+    protected PreparedStatement getPsUpdate(
+            Connection connection, Book object, long id) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
-                    "UPDATE BOOK SET TITLE = ?, AUTHOR = ?, GENRE = ?, PUBLISHER = ?, YEAR = ?, CITY = ? WHERE ID = ?");
+                    "UPDATE BOOK SET " +
+                            "TITLE = ?, AUTHOR = ?, GENRE = ?, PUBLISHER = ?, YEAR = ?, CITY = ? WHERE ID = ?");
             //setValues(statement, object);
             statement.setString(ONE, object.getTitle());
             statement.setLong(TWO, object.getAuthor().getId());
@@ -86,7 +91,8 @@ public class BookDAO extends AbstractDAO<Book> {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
-                    "INSERT INTO BOOK(ID, TITLE, AUTHOR, GENRE, PUBLISHER, YEAR, CITY) VALUES(?, ?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO BOOK(" +
+                            "ID, TITLE, AUTHOR, GENRE, PUBLISHER, YEAR, CITY) VALUES(?, ?, ?, ?, ?, ?, ?)");
             setValues(statement, object);
             statement.setLong(ONE,object.getId());
         } catch (SQLException e) {
@@ -96,7 +102,8 @@ public class BookDAO extends AbstractDAO<Book> {
     }
 
     @Override
-    protected PreparedStatement getPsByAuthor(Connection connection, Author object) throws SQLException {
+    protected PreparedStatement getPsByAuthor(
+            Connection connection, Author object) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement("SELECT * FROM BOOK WHERE AUTHOR = ?");
@@ -108,7 +115,8 @@ public class BookDAO extends AbstractDAO<Book> {
     }
 
     @Override
-    protected PreparedStatement getPsByPublisher(Connection connection, Publisher object) throws SQLException {
+    protected PreparedStatement getPsByPublisher(
+            Connection connection, Publisher object) throws SQLException {
         PreparedStatement statement = null;
         try {
                 statement = connection.prepareStatement("SELECT * FROM BOOK WHERE PUBLISHER = ?");
@@ -120,7 +128,8 @@ public class BookDAO extends AbstractDAO<Book> {
     }
 
     @Override
-    protected PreparedStatement getPsByGenre(Connection connection, Genre object) throws SQLException {
+    protected PreparedStatement getPsByGenre(
+            Connection connection, Genre object) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement("SELECT * FROM BOOK WHERE GENRE = ?");

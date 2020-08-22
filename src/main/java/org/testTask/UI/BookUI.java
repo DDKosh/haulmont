@@ -9,20 +9,44 @@ import org.testTask.DTO.Author;
 import org.testTask.DTO.Book;
 import org.testTask.DTO.Publisher;
 
+/**
+ * The type Book ui.
+ */
 public class BookUI extends AbstractUI {
 
+    /**
+     * The Title field.
+     */
     TextField titleField = new TextField("Title");
 
+    /**
+     * The Author combo box.
+     */
     ComboBox<Author> authorComboBox = new ComboBox<>("Autors", new AuthorDAO().getAll());
 
+    /**
+     * The Publisher combo box.
+     */
     ComboBox<Publisher> publisherComboBox = new ComboBox<>("Publishers", new PublisherDAO().getAll());
 
+    /**
+     * The Apply button.
+     */
     Button applyButton = new Button("Apply");
 
+    /**
+     * The Reset button.
+     */
     Button resetButton = new Button("Reset");
 
+    /**
+     * The Layout.
+     */
     VerticalLayout layout = new VerticalLayout();
 
+    /**
+     * Instantiates a new Book ui.
+     */
     public BookUI() {
         super(new BookDAO());
         authorComboBox.setItemCaptionGenerator(new ItemCaptionGenerator<Author>() {
@@ -51,7 +75,8 @@ public class BookUI extends AbstractUI {
             }
             if (!publisherComboBox.isEmpty()) {
                 getEntity().clear();
-                getEntity().addAll(getDAO().getAllByPublisher(publisherComboBox.getSelectedItem().get()));
+                getEntity().addAll(getDAO().getAllByPublisher(
+                        publisherComboBox.getSelectedItem().get()));
                 grid.getDataProvider().refreshAll();
             }
         });
@@ -62,7 +87,8 @@ public class BookUI extends AbstractUI {
             authorComboBox.setSelectedItem(null);
             publisherComboBox.setSelectedItem(null);
         });
-        layout.addComponents(titleField, authorComboBox, publisherComboBox, applyButton, resetButton);
+        layout.addComponents(
+                titleField, authorComboBox, publisherComboBox, applyButton, resetButton);
         addFilter(layout);
     }
 

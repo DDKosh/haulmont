@@ -10,13 +10,29 @@ import org.testTask.DTO.Genre;
 import java.util.*;
 
 
-public class GenreUI extends AbstractUI{
+/**
+ * The type Genre ui.
+ */
+public class GenreUI extends AbstractUI {
 
+    /**
+     * The statistic button
+     */
     private Button statButton = new Button("Statistic");
+
+    /**
+     * The reset statistic button
+     */
     private Button resetButton = new Button("Reset");
 
+    /**
+     * The Layout.
+     */
     HorizontalLayout layout = new HorizontalLayout();
 
+    /**
+     * Instantiates a new Genre ui.
+     */
     public GenreUI() {
         super(new GenreDAO());
         layout.addComponents(statButton, resetButton);
@@ -26,6 +42,7 @@ public class GenreUI extends AbstractUI{
             for(Genre g : (List<Genre>) getEntity()) {
                 list.put(g, new BookDAO().getAllByGenre(g).size());
             }
+            if (grid.getColumn("Count") == null)
             grid.addColumn(c -> list.get(c)).setCaption("Count").setId("Count");
         });
 

@@ -7,7 +7,7 @@ import org.testTask.DAO.AbstractDAO;
 import org.testTask.DAO.AuthorDAO;
 import org.testTask.DTO.Author;
 
-public class AuthorUI extends AbstractUI{
+public class AuthorUI extends AbstractUI {
 
     public AuthorUI() {
         super(new AuthorDAO());

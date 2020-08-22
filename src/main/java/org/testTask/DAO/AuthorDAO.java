@@ -7,6 +7,9 @@ import org.testTask.DTO.Publisher;
 
 import java.sql.*;
 
+/**
+ * The type Author dao.
+ */
 public class AuthorDAO extends AbstractDAO<Author> {
 
     private static final int ONE = 1;
@@ -18,18 +21,19 @@ public class AuthorDAO extends AbstractDAO<Author> {
     private static final int FOUR = 4;
 
     @Override
-    protected Author getObject(ResultSet resultSet) throws SQLException {
+    protected Author getObject(final ResultSet resultSet) throws SQLException {
         return new Author(resultSet.getLong("ID"), resultSet.getString("NAME"),
                 resultSet.getString("SURNAME"), resultSet.getString("PATRONYMIC"));
     }
 
     @Override
-    protected ResultSet getRsAll(Statement statement) throws SQLException {
+    protected ResultSet getRsAll(final Statement statement) throws SQLException {
         return statement.executeQuery("SELECT * FROM AUTHOR");
     }
 
     @Override
-    protected PreparedStatement getRsById(Connection connection, long id) throws SQLException {
+    protected PreparedStatement getRsById(
+            final Connection connection, final long id) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement("SELECT * FROM AUTHOR WHERE ID = ?");
@@ -41,7 +45,8 @@ public class AuthorDAO extends AbstractDAO<Author> {
     }
 
     @Override
-    protected PreparedStatement getPsUpdate(Connection connection, Author object, long id) throws SQLException {
+    protected PreparedStatement getPsUpdate(
+            final Connection connection, final Author object, final long id) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
@@ -58,7 +63,8 @@ public class AuthorDAO extends AbstractDAO<Author> {
     }
 
     @Override
-    protected PreparedStatement getPsDelete(Connection connection, long id) throws SQLException {
+    protected PreparedStatement getPsDelete(
+            final Connection connection, final long id) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
@@ -71,7 +77,8 @@ public class AuthorDAO extends AbstractDAO<Author> {
     }
 
     @Override
-    protected PreparedStatement getPsAdd(Connection connection, Author object) throws SQLException {
+    protected PreparedStatement getPsAdd(
+            final Connection connection, final Author object) throws SQLException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(
@@ -86,26 +93,31 @@ public class AuthorDAO extends AbstractDAO<Author> {
     }
 
     @Override
-    protected PreparedStatement getPsByTitle(Connection connection, String title) throws SQLException {
+    protected PreparedStatement getPsByTitle(
+            final Connection connection, final String title) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByAuthor(Connection connection, Author object) throws SQLException {
+    protected PreparedStatement getPsByAuthor(
+            final Connection connection, final Author object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByPublisher(Connection connection, Publisher object) throws SQLException {
+    protected PreparedStatement getPsByPublisher(
+            final Connection connection, final Publisher object) throws SQLException {
         return null;
     }
 
     @Override
-    protected PreparedStatement getPsByGenre(Connection connection, Genre object) throws SQLException {
+    protected PreparedStatement getPsByGenre(
+            final Connection connection, final Genre object) throws SQLException {
         return null;
     }
 
-    private void setValues(final PreparedStatement statement, final Author author) throws SQLException {
+    private void setValues(
+            final PreparedStatement statement, final Author author) throws SQLException {
         statement.setString(TWO, author.getName());
         statement.setString(FOUR, author.getSurname());
         statement.setString(THREE, author.getPatronymic());
